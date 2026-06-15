@@ -624,13 +624,22 @@ print("✅ Akış diyagramı kaydedildi: st/akis_diyagrami.png")
 # %%
 
 import os
-kayit_klasoru = r'C:\Users\Aya Karakoyun\Desktop\st'
+kayit_klasoru = '/content/grafikler'
+import os; os.makedirs(kayit_klasoru, exist_ok=True)
 print("\n📁 Kaydedilen dosyalar:")
 for dosya in sorted(os.listdir(kayit_klasoru)):
     if dosya.endswith('.png'):
         boyut = os.path.getsize(os.path.join(kayit_klasoru, dosya)) / 1024
         print(f"  ✅ {dosya} ({boyut:.0f} KB)")
-        
+
+print(f"\n📁 Kaydedilen dosyalar ({kayit_klasoru}):")
+try:
+    for dosya in sorted(os.listdir(kayit_klasoru)):
+        if dosya.endswith('.png'):
+            boyut = os.path.getsize(os.path.join(kayit_klasoru, dosya)) / 1024
+            print(f"  ✅ {dosya} ({boyut:.0f} KB)")
+except:
+    print("  ⚠️ Klasör bulunamadı, grafikler bellekte gösterildi.")
         
 
         
